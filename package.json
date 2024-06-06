@@ -1,0 +1,16 @@
+{
+  "version": "0.0.0",
+  "name": "@benmerckx/suite",
+  "module": "suite.js",
+  "type": "module",
+  "files": [
+    "suite.js",
+    "suite.d.ts"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  }
+}

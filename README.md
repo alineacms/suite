@@ -1,5 +1,8 @@
 # suite
 
+[![NPM Version](https://img.shields.io/npm/v/@benmerckx/suite)](https://www.npmjs.com/package/@benmerckx/suite)
+[![JSR](https://jsr.io/badges/@benmerckx/suite)](https://jsr.io/@benmerckx/suite)
+
 Describe tests that run in the native test runners of Node.js, Deno and Bun.
 
 ## example

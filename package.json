@@ -2,6 +2,7 @@
   "version": "0.2.0",
   "name": "@benmerckx/suite",
   "module": "suite.js",
+  "types": "suite.d.ts",
   "type": "module",
   "files": [
     "suite.js",

@@ -41,6 +41,10 @@ suite(import.meta, (test) => {
     test.ok(false)
   })
 
+  test('async', async () => {
+    test.ok(true)
+  })
+
   /*test.only('only', () => {
     test.ok(true)
   })*/

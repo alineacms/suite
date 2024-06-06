@@ -8,6 +8,7 @@ Describe tests that run in the native test runners of Node.js, Deno and Bun.
 ## example
 
 ````ts
+// example.test.js
 import {suite} from '@benmerckx/suite'
 
 suite(import.meta, test => {

@@ -5,25 +5,23 @@ var isNode = !isDeno && 'process' in globalThis
 var setup
 
 if (isBun) {
-  const {expect} = await import('bun:test')
   setup = meta => {
-    const native = Bun.jest(meta.path).test
-    const test = native.bind()
-    test.skip = native.skip
-    test.only = native.only.bind(native)
-    test.ok = a => expect(a).toBeTruthy()
-    test.is = (a, b) => expect(a).toBe(b)
-    test.equal = (a, b) => expect(a).toEqual(b)
+    const native = Bun.jest(meta.path)
+    const test = native.test.bind()
+    test.skip = native.test.skip
+    test.only = native.test.only
+    test.ok = a => native.expect(a).toBeTruthy()
+    test.is = (a, b) => native.expect(a).toBe(b)
+    test.equal = (a, b) => native.expect(a).toEqual(b)
     test.throws = (fn, err) => 
-      err === undefined ? expect(fn).toThrow() : expect(fn).toThrow(err)
+      err === undefined ? native.expect(fn).toThrow() : native.expect(fn).toThrow(err)
     test.not = {
-      ok: a => expect(a).toBeFalsy(),
-      is: (a, b) => expect(a).not.toBe(b),
-      equal: (a, b) => expect(a).not.toEqual(b)
+      ok: a => native.expect(a).toBeFalsy(),
+      is: (a, b) => native.expect(a).not.toBe(b),
+      equal: (a, b) => native.expect(a).not.toEqual(b)
     }
     return test
   }
-      
 } else if (isNode) {
   try {
     const asserts = await import('node:assert')
@@ -41,12 +39,12 @@ if (isBun) {
       equal: asserts.notDeepStrictEqual
     }
     setup = () => test
-  } catch (err) {
-    console.error(err)
+  } catch {
+    console.error(`Node.js built-in test module not found`)
     process.exit(1)
   }
 } else if (isDeno) {
-  const asserts = await import('https://deno.land/std/testing/asserts.ts')
+  const asserts = await import('jsr:@std/testing@0.225.1/asserts')
   const native = Deno.test
   const test = native.bind()
   test.skip = native.ignore

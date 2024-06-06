@@ -1,8 +1,6 @@
 /** Describe a test */
-export interface Describe {
-  /** Define a test */
-  (name: string, run: ()=> void | Promise<void>): void
-}
+export type Describe =
+  (name: string, run: ()=> void | Promise<void>) => void
 
 /** Define a test suite */
 export interface DefineTest extends Describe {
@@ -30,9 +28,8 @@ export interface DefineTest extends Describe {
 }
 
 /** Define a test suite */
-export interface Suite {
-  (meta: ImportMeta, define: (test: DefineTest) => void): void
-}
+export type Suite = 
+  (meta: ImportMeta, define: (test: DefineTest) => void) => void
 
 /** Define a test suite */
 export const suite: Suite

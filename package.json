@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "0.1.0",
   "name": "@benmerckx/suite",
   "module": "suite.js",
   "type": "module",
@@ -12,5 +12,12 @@
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
+  },
+  "scripts": {
+    "test": "node --test && deno test && bun test",
+    "deploy": "npm publish && npx jsr publish"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

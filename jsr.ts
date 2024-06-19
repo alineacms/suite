@@ -1,4 +1,4 @@
-import type {Suite} from './src/suite'
+import type {Suite} from './src/suite.d.ts'
 
 /** Define a test suite */
 export const suite: Suite = (

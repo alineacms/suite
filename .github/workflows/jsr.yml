@@ -20,4 +20,4 @@ jobs:
       - name: Build package
         run: bun run build
       - name: Publish package
-        run: npx jsr publish --config jsr.json
+        run: bunx jsr publish --config jsr.json

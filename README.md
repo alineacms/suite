@@ -49,10 +49,8 @@ Run with:
 export function suite(meta: ImportMeta, define: (test: DefineTest) => void): void
 
 /** Describe a test */
-export interface Describe {
-  /** Define a test */
-  (name: string, run: ()=> void | Promise<void>): void
-}
+export type Describe =
+  (name: string, run: () => void | Promise<void>): void
 
 /** Define a test suite */
 export interface DefineTest extends Describe {

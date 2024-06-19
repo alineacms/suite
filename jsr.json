@@ -3,6 +3,7 @@
   "version": "0.3.0",
   "exports": "./jsr.ts",
   "publish": {
+    "include": ["jsr.ts", "src", "dist"],
     "exclude": ["!dist"]
   }
 }

@@ -1,5 +1,4 @@
 export function setup(meta) {
-  // @ts-ignore
   const native = Bun.jest(meta.path)
   const test = native.test.bind()
   test.skip = native.test.skip

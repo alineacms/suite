@@ -8,7 +8,6 @@ import {
   assertThrows
 } from '../node_modules/@jsr/std__assert/mod.js'
 
-// @ts-ignore
 const native = Deno.test
 const test = native.bind()
 test.skip = native.ignore

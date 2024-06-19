@@ -15,7 +15,8 @@
   "scripts": {
     "build": "bun build src/suite.deno.js --outdir=dist --minify",
     "test": "node --test && deno test && bun test",
-    "deploy": "npm publish && npx jsr publish"
+    "deploy": "npm publish && npx jsr publish",
+    "prepublishOnly": "bun run build"
   },
   "publishConfig": {
     "access": "public"
@@ -26,11 +27,11 @@
       "bun": "./src/suite.bun.js",
       "node": "./src/suite.node.js",
       "types": "./src/suite.d.ts"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "imports": {
     "#suite": {
-      "deno": "./dist/suite.deno.js",
       "bun": "./src/suite.bun.js",
       "node": "./src/suite.node.js",
       "types": "./src/suite.d.ts"

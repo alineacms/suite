@@ -1,24 +1,39 @@
 {
-  "version": "0.2.0",
+  "version": "0.3.0",
   "name": "@benmerckx/suite",
   "module": "suite.js",
   "types": "suite.d.ts",
   "type": "module",
-  "files": [
-    "suite.js",
-    "suite.d.ts"
-  ],
+  "files": ["./dist", "./src"],
   "devDependencies": {
+    "@jsr/std__assert": "^0.225.2",
     "@types/bun": "latest"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "scripts": {
+    "build": "bun build src/suite.deno.js --outdir=dist --minify",
     "test": "node --test && deno test && bun test",
     "deploy": "npm publish && npx jsr publish"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "exports": {
+    ".": {
+      "deno": "./dist/suite.deno.js",
+      "bun": "./src/suite.bun.js",
+      "node": "./src/suite.node.js",
+      "types": "./src/suite.d.ts"
+    }
+  },
+  "imports": {
+    "#suite": {
+      "deno": "./dist/suite.deno.js",
+      "bun": "./src/suite.bun.js",
+      "node": "./src/suite.node.js",
+      "types": "./src/suite.d.ts"
+    }
   }
 }

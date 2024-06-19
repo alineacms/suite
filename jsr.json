@@ -1,5 +1,8 @@
 {
   "name": "@benmerckx/suite",
-  "version": "0.2.0",
-  "exports": "./mod.ts"
+  "version": "0.3.0",
+  "exports": "./jsr.ts",
+  "publish": {
+    "exclude": ["!dist"]
+  }
 }

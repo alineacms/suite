@@ -1,6 +1,6 @@
-import {suite} from './suite.js'
+import {suite} from '#suite'
 
-suite(import.meta, (test) => {
+suite(import.meta, test => {
   test('truthy', () => {
     test.ok(true)
   })

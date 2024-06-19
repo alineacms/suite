@@ -1,0 +1,5 @@
+{
+  "imports": {
+    "#suite": "./dist/suite.deno.js"
+  }
+}

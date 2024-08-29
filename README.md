@@ -1,7 +1,7 @@
 # suite
 
-[![NPM Version](https://img.shields.io/npm/v/@benmerckx/suite)](https://www.npmjs.com/package/@benmerckx/suite)
-[![JSR](https://jsr.io/badges/@benmerckx/suite)](https://jsr.io/@benmerckx/suite)
+[![NPM Version](https://img.shields.io/npm/v/@alinea/suite)](https://www.npmjs.com/package/@alinea/suite)
+[![JSR](https://jsr.io/badges/@alinea/suite)](https://jsr.io/@alinea/suite)
 
 Describe tests that run in the native test runners of Node.js, Deno and Bun.
 
@@ -9,7 +9,7 @@ Describe tests that run in the native test runners of Node.js, Deno and Bun.
 
 ````ts
 // example.test.js
-import {suite} from '@benmerckx/suite'
+import {suite} from '@alinea/suite'
 
 suite(import.meta, test => {
   test('is', () => {

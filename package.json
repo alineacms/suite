@@ -6,9 +6,7 @@
   "files": ["./dist", "./src"],
   "devDependencies": {
     "@jsr/std__assert": "^0.225.2",
-    "@types/bun": "latest"
-  },
-  "peerDependencies": {
+    "@types/bun": "latest",
     "typescript": "^5.0.0"
   },
   "scripts": {

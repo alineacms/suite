@@ -1,8 +1,7 @@
 {
   "version": "0.3.0",
   "name": "@benmerckx/suite",
-  "module": "suite.js",
-  "types": "suite.d.ts",
+  "types": "./src/suite.d.ts",
   "type": "module",
   "files": ["./dist", "./src"],
   "devDependencies": {

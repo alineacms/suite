@@ -15,9 +15,29 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
-      - name: Install dependencies
-        run: bun i --frozen-lockfile
-      - name: Build package
-        run: bun run build
-      - name: Publish package
-        run: bunx jsr publish --config jsr.json
+      - run: bun i --frozen-lockfile
+      - run: bun test
+      - run: bunx jsr publish --config jsr.json --dry-run
+  publishNPM:
+    runs-on: ubuntu-latest
+    needs: ci
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install --frozen-lockfile
+      - run: |
+          npm config set //registry.npmjs.org/:_authToken ${{secrets.NPM_AUTH_TOKEN}}
+          npm publish
+  publishJSR:
+    runs-on: ubuntu-latest
+    needs: ci
+    permissions:
+      contents: read
+      id-token: write
+    if: startsWith(github.ref, 'refs/tags/v')
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - run: bun install --frozen-lockfile
+      - run: bunx jsr publish --config jsr.json

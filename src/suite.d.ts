@@ -1,7 +1,12 @@
 /** Describe a test */
-export interface Describe<Context = void>{
+export interface Describe<Context = void> {
   (name: string, run: (context: Context) => void | Promise<void>): void
-} 
+  (
+    name: string,
+    options: Record<string, unknown>,
+    run: (context: Context) => void | Promise<void>
+  ): void
+}
 
 interface Assert {
   /** Assert that actual is a truthy value */
@@ -46,7 +51,10 @@ export interface DefineTest<Context = void> extends Describe<Context>, Assert {
 
 /** Define a test suite */
 export interface Suite {
-  <Context extends Hooks>(meta: ImportMeta, context?: Context): DefineTest<Context>
+  <Context extends Hooks>(
+    meta: ImportMeta,
+    context?: Context
+  ): DefineTest<Context>
   (meta: ImportMeta, define: (test: DefineTest) => void): void
 }
 

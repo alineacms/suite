@@ -67,6 +67,10 @@ test('async', async () => {
   test.ok(true)
 })
 
+test('options', { timeout: 1000 }, () => {
+  test.ok(true)
+})
+
 /*test.only('only', () => {
     test.ok(true)
   })*/

@@ -10,10 +10,10 @@ export function createSuite(setup) {
       if ('afterAll' in ctx) test.afterAll(ctx.afterAll.bind(ctx))
     }
     return Object.assign(
-      (name, run) => {
-        return test(name, () => {
-          return run(ctx)
-        })
+      (name, options, run) => {
+        return typeof options === 'function'
+          ? test(name, () => options(ctx))
+          : test(name, options, () => run(ctx))
       },
       test,
       {

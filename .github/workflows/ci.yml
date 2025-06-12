@@ -15,8 +15,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
-      - run: bun i --frozen-lockfile
+      - run: bun i --frozen-lockfile && bun run build
       - run: bun test
+      - uses: actions/setup-node@v4
+      - run: node --test
+      - uses: denoland/setup-deno@v2
+      - run: deno test
       - run: bunx jsr publish --config jsr.json --dry-run
   npm:
     runs-on: ubuntu-latest
